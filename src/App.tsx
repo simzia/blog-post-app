@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Default from "./layouts/Default";
+import Screen1 from "./containers/BlogList";
+import BlogPost from "./containers/BlogPage";
+import AlbumList from "./containers/AlbumList";
+import Gallery from "./containers/AlbumPage";
+import Home from "./containers/Home";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter> 
+      <Routes>
+        <Route path="/" element={<Default />}>
+          <Route path="/" element={<Home />}/>
+          <Route path="/blog-list" element={<Screen1 />}/>
+          <Route path="/album-list" element={<AlbumList />}/>
+          <Route path="/blog-list/:Blogid" element={<BlogPost />}/>
+          <Route path="/album-list/:Albumid" element={<Gallery />}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
